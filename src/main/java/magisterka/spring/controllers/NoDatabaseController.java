@@ -13,7 +13,7 @@ public class NoDatabaseController {
         return "OK";
     }
 
-    @GetMapping("/transformPersons")
+    @PutMapping("/transformPersons")
     public List<PostPerson> transformPersons(@RequestBody List<PostPerson> persons) {
         return PostPersonUtils.transformPersons(persons);
     }
