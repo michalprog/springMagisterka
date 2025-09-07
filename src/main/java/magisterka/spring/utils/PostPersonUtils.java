@@ -1,10 +1,15 @@
 package magisterka.spring.utils;
 import magisterka.spring.models.PostPerson;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+@Service
 public class PostPersonUtils {
     private static final Random random = new Random();
 
@@ -42,5 +47,15 @@ Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculu
 
             return updated;
         }).collect(Collectors.toList());
+    }
+
+    public void getALL(){
+    }
+
+    public void createPersons(){
+
+    }
+
+    public void personStatistics(){
     }
 }

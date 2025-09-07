@@ -8,17 +8,13 @@ public class PostPersonController {
     @GetMapping("/getAll")
     public void getALL(){
     }
-    @GetMapping("/getRecords")
-    public void getRecords(){
+    @PostMapping("/createPersons")
+    public void createPersons(){
+
     }
-    @PostMapping("/createRecords")
-    public void createRecords(){
+    @PutMapping("/personStatistics")
+    public void personStatistics(){
     }
-    @PutMapping("/updateRecords")
-    public void updateRecords(){
-    }
-    @DeleteMapping("/deleteRecords")
-    public void deleteRecords(){
-    }
+
 
 }

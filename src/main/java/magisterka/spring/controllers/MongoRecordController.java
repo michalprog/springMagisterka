@@ -8,14 +8,18 @@ public class MongoRecordController {
 
     @GetMapping("/getAll")
     public void getALL(){
-
     }
-    @PostMapping("/createPersons")
-    public void createPersons(){
-
+    @GetMapping("/getRecords")
+    public void getRecords(){
     }
-    @PutMapping("/personStatistics")
-    public void personStatistics(){
+    @PostMapping("/createRecords")
+    public void createRecords(){
+    }
+    @PutMapping("/updateRecords")
+    public void updateRecords(){
+    }
+    @DeleteMapping("/deleteRecords")
+    public void deleteRecords(){
     }
 
 }
