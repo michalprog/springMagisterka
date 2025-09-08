@@ -1,25 +1,44 @@
 package magisterka.spring.controllers;
-import org.springframework.http.ResponseEntity;
+
+import magisterka.spring.models.LimitRequest;
+import magisterka.spring.models.MongoRecord;
+import magisterka.spring.utils.MongoRecordUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/mongoRecord")
 public class MongoRecordController {
 
-    @GetMapping("/getAll")
-    public void getALL(){
-    }
-    @GetMapping("/getRecords")
-    public void getRecords(){
-    }
-    @PostMapping("/createRecords")
-    public void createRecords(){
-    }
-    @PutMapping("/updateRecords")
-    public void updateRecords(){
-    }
-    @DeleteMapping("/deleteRecords")
-    public void deleteRecords(){
+    private final MongoRecordUtils utils;
+
+    public MongoRecordController(MongoRecordUtils utils) {
+        this.utils = utils;
     }
 
+    @GetMapping("/getAll")
+    public List<MongoRecord> getALL() {
+        return utils.getALL();
+    }
+
+    @GetMapping("/getRecords")
+    public List<MongoRecord> getRecords(@RequestBody LimitRequest request) {
+        return utils.getRecords(request.limit);
+    }
+
+    @PostMapping("/createRecords")
+    public List<MongoRecord> createRecords(@RequestBody List<MongoRecord> records) {
+        return utils.createRecords(records);
+    }
+
+    @PutMapping("/updateRecords")
+    public List<MongoRecord> updateRecords(@RequestBody List<MongoRecord> records) {
+        return utils.updateRecords(records);
+    }
+
+    @DeleteMapping("/deleteRecords")
+    public int deleteRecords(@RequestBody LimitRequest request) {
+        return utils.deleteRecords(request.limit);
+    }
 }

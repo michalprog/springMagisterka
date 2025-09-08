@@ -1,15 +1,18 @@
 package magisterka.spring.controllers;
+import magisterka.spring.models.PostPerson;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/postPerson")
 public class PostPersonController {
     @GetMapping("/getAll")
-    public void getALL(){
+    public List<PostPerson> getALL(){
     }
     @PostMapping("/createPersons")
-    public void createPersons(){
+    public List<PostPerson> createPersons(){
 
     }
     @PutMapping("/personStatistics")
