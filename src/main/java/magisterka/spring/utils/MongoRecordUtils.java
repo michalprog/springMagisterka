@@ -2,6 +2,7 @@ package magisterka.spring.utils;
 
 import magisterka.spring.models.MongoRecord;
 import magisterka.spring.repo.MongoRecordRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,9 +21,7 @@ public class MongoRecordUtils {
     }
 
     public List<MongoRecord> getRecords(int limit) {
-        return repository.findAll().stream()
-                .limit(limit)
-                .toList();
+        return repository.findAll(PageRequest.of(0, limit)).getContent();
     }
 
 
@@ -37,9 +36,7 @@ public class MongoRecordUtils {
 
 
     public int deleteRecords(int limit) {
-        List<MongoRecord> toDelete = repository.findAll().stream()
-                .limit(limit)
-                .toList();
+        List<MongoRecord> toDelete = getRecords(limit);
         repository.deleteAll(toDelete);
         return toDelete.size();
     }

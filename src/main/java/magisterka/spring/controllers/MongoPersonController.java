@@ -1,28 +1,34 @@
 package magisterka.spring.controllers;
-import org.springframework.http.ResponseEntity;
+
+import magisterka.spring.models.MongoPerson;
+import magisterka.spring.models.Statistics;
+import magisterka.spring.utils.MongoPersonUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/mongoPerson")
 public class MongoPersonController {
 
+    private final MongoPersonUtils utils;
+
+    public MongoPersonController(MongoPersonUtils utils) {
+        this.utils = utils;
+    }
+
     @GetMapping("/getAll")
-    public void getALL(){
+    public List<MongoPerson> getALL() {
+        return utils.getAll();
     }
+
     @PostMapping("/createPersons")
-    public void createPersons(){
-
+    public List<MongoPerson> createPersons(@RequestBody List<MongoPerson> persons) {
+        return utils.createPersons(persons);
     }
+
     @PutMapping("/personStatistics")
-    public void personStatistics(){
+    public List<Statistics> personStatistics() {
+        return utils.personStatistics();
     }
-
-
-
-
-
-
-
-
-
 }
