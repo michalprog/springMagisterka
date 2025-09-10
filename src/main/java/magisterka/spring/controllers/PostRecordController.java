@@ -1,8 +1,7 @@
 package magisterka.spring.controllers;
 import magisterka.spring.models.LimitRequest;
-import magisterka.spring.models.PostRecord;
+import magisterka.spring.repo.jpa.PostRecord;
 import magisterka.spring.utils.PostRecordUtils;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

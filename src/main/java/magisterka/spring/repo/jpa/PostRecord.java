@@ -1,4 +1,4 @@
-package magisterka.spring.models;
+package magisterka.spring.repo.jpa;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 @Entity

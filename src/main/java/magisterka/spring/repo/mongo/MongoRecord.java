@@ -1,8 +1,6 @@
-package magisterka.spring.models;
+package magisterka.spring.repo.mongo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import org.springframework.data.annotation.Id;
 
 @Document(collection = "MongoRecord")
 public class MongoRecord {

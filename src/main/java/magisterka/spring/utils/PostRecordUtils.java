@@ -1,6 +1,6 @@
 package magisterka.spring.utils;
 
-import magisterka.spring.models.PostRecord;
+import magisterka.spring.repo.jpa.PostRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import magisterka.spring.repo.PostRecordRepository;

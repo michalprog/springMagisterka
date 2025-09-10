@@ -9,15 +9,17 @@ services:
       - mongo
 
   postgres:
-    image: postgres:17
+    image: postgres:15
+    #pgvector/pgvector:pg16
+    #postgres:15-alpine
     container_name: postgres_db
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
+      POSTGRES_PASSWORD: "TjtPO93RGHcX4KPTtf8kjyu9kYnjOtAG"
       POSTGRES_DB: spring_magisterka
     ports:
-      - "5432:5432"
+      - "8090:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

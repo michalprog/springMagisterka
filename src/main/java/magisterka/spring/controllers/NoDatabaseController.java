@@ -1,5 +1,5 @@
 package magisterka.spring.controllers;
-import magisterka.spring.models.PostPerson;
+import magisterka.spring.repo.jpa.PostPerson;
 import magisterka.spring.utils.PostPersonUtils;
 import org.springframework.web.bind.annotation.*;
 

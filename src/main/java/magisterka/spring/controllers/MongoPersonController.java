@@ -1,6 +1,6 @@
 package magisterka.spring.controllers;
 
-import magisterka.spring.models.MongoPerson;
+import magisterka.spring.repo.mongo.MongoPerson;
 import magisterka.spring.models.Statistics;
 import magisterka.spring.utils.MongoPersonUtils;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package magisterka.spring.utils;
 
-import magisterka.spring.models.MongoPerson;
+import magisterka.spring.repo.mongo.MongoPerson;
 import magisterka.spring.models.Statistics;
 import magisterka.spring.models.UniversalPerson;
 import magisterka.spring.repo.MongoPersonRepository;

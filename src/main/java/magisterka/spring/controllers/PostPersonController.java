@@ -1,8 +1,7 @@
 package magisterka.spring.controllers;
-import magisterka.spring.models.PostPerson;
+import magisterka.spring.repo.jpa.PostPerson;
 import magisterka.spring.models.Statistics;
 import magisterka.spring.utils.PostPersonUtils;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

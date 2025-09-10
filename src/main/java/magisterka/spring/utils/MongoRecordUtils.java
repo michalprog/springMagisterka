@@ -1,6 +1,6 @@
 package magisterka.spring.utils;
 
-import magisterka.spring.models.MongoRecord;
+import magisterka.spring.repo.mongo.MongoRecord;
 import magisterka.spring.repo.MongoRecordRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

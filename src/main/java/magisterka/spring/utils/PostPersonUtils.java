@@ -1,6 +1,6 @@
 package magisterka.spring.utils;
 
-import magisterka.spring.models.PostPerson;
+import magisterka.spring.repo.jpa.PostPerson;
 import magisterka.spring.models.Statistics;
 import magisterka.spring.models.UniversalPerson;
 import magisterka.spring.repo.PostPersonRepository;

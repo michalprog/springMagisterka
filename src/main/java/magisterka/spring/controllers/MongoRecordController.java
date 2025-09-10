@@ -1,7 +1,7 @@
 package magisterka.spring.controllers;
 
 import magisterka.spring.models.LimitRequest;
-import magisterka.spring.models.MongoRecord;
+import magisterka.spring.repo.mongo.MongoRecord;
 import magisterka.spring.utils.MongoRecordUtils;
 import org.springframework.web.bind.annotation.*;
 
