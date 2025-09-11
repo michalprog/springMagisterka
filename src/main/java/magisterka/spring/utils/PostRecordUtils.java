@@ -2,6 +2,7 @@ package magisterka.spring.utils;
 
 import magisterka.spring.repo.jpa.PostRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import magisterka.spring.repo.PostRecordRepository;
 import java.util.List;
@@ -19,7 +20,8 @@ public class PostRecordUtils {
     }
 
     public static List<PostRecord> getRecords(int limit) {
-        return repository.findAll().stream().limit(limit).toList();
+        return repository.findAll(PageRequest.of(0, limit)).getContent();
+
     }
 
     public static List<PostRecord> createRecords(List<PostRecord> records) {
