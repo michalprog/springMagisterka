@@ -38,7 +38,7 @@ public class MongoRecordController {
     }
 
     @DeleteMapping("/deleteRecords")
-    public int deleteRecords(@RequestBody LimitRequest request) {
+    public long deleteRecords(@RequestBody LimitRequest request) {
         return utils.deleteRecords(request.limit);
     }
 }

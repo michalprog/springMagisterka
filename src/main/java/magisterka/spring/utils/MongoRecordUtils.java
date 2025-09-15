@@ -2,7 +2,11 @@ package magisterka.spring.utils;
 
 import magisterka.spring.repo.mongo.MongoRecord;
 import magisterka.spring.repo.MongoRecordRepository;
+
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Service;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,10 +25,8 @@ public class MongoRecordUtils {
     }
 
     public List<MongoRecord> getRecords(int limit) {
-        return repository.findAll(PageRequest.of(0, limit)).getContent();
+        return repository.findLimited(PageRequest.of(0, limit));
     }
-
-
     public List<MongoRecord> createRecords(List<MongoRecord> records) {
         return repository.saveAll(records);
     }
@@ -36,8 +38,26 @@ public class MongoRecordUtils {
 
 
     public int deleteRecords(int limit) {
-        List<MongoRecord> toDelete = getRecords(limit);
-        repository.deleteAll(toDelete);
-        return toDelete.size();
+
+        List<MongoRecord> records = repository
+                .findAll(PageRequest.of(0, limit))
+                .getContent()
+                .stream()
+                .toList();
+
+        int deletedCount = 0;
+
+        for (MongoRecord record : records) {
+            try {
+                repository.delete(record);
+                deletedCount++;
+            } catch (Exception e) {
+            }
+        }
+
+        return deletedCount;
     }
+
+
+
 }
