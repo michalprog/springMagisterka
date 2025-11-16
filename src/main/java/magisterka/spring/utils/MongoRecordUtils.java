@@ -1,9 +1,10 @@
 package magisterka.spring.utils;
 
-import magisterka.spring.repo.mongo.MongoRecord;
+import com.mongodb.client.result.DeleteResult;
 import magisterka.spring.repo.MongoRecordRepository;
-import org.springframework.data.domain.PageRequest;
+import magisterka.spring.repo.mongo.MongoRecord;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
@@ -38,17 +39,19 @@ public class MongoRecordUtils {
     }
 
     public int deleteRecords(int limit) {
-        Query query = new Query().limit(limit);
-        List<MongoRecord> records = mongoTemplate.find(query, MongoRecord.class);
 
-        int deletedCount = 0;
-        for (MongoRecord record : records) {
-            try {
-                repository.delete(record);
-                deletedCount++;
-            } catch (Exception ignored) {
-            }
-        }
-        return deletedCount;
+        Query query = new Query().limit(limit);
+        query.fields().include("_id"); // tylko ID, nie cały dokument
+
+        List<MongoRecord> records = mongoTemplate.find(query, MongoRecord.class);
+        List<String> ids = records.stream()
+                .map(r -> r.id)  // bez gettera, bo pole jest publiczne
+                .toList();
+
+        if (ids.isEmpty()) return 0;
+        Query deleteQuery = new Query(Criteria.where("_id").in(ids));
+        DeleteResult result = mongoTemplate.remove(deleteQuery, MongoRecord.class);
+
+        return (int) result.getDeletedCount();
     }
 }

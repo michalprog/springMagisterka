@@ -6,9 +6,6 @@ public class UniversalPerson {
     public int salary;
     public int role;
 
-    public UniversalPerson() {
-    }
-
     public UniversalPerson(String name, String surname, int salary, int role) {
         this.name = name;
         this.surname = surname;

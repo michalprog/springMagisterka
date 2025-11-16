@@ -9,25 +9,23 @@ import java.util.List;
 @RestController
 @RequestMapping("/postPerson")
 public class PostPersonController {
-    private final PostPersonUtils utils;
 
-    public PostPersonController(PostPersonUtils utils) {
-        this.utils = utils;
+    public PostPersonController() {
     }
 
     @GetMapping("/getAll")
     public List<PostPerson> getALL() {
-        return utils.getAll();
+        return PostPersonUtils.getAll();
     }
 
     @PostMapping("/createPersons")
     public List<PostPerson> createPersons(@RequestBody List<PostPerson> persons ) {
-        return utils.createPersons(persons);
+        return PostPersonUtils.createPersons(persons);
     }
 
     @PutMapping("/personStatistics")
     public List<Statistics> personStatistics() {
-        return utils.personStatistics();
+        return PostPersonUtils.personStatistics();
     }
 
 

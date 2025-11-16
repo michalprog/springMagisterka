@@ -7,9 +7,6 @@ public class Statistics {
     public UniversalPerson minSalaryPerson;
     public UniversalPerson maxSalaryPerson;
 
-    public Statistics() {
-    }
-
     public Statistics(String role, int count, double averageSalary,
                       UniversalPerson minSalaryPerson, UniversalPerson maxSalaryPerson) {
         this.role = role;
