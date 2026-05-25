@@ -8,7 +8,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/noDatabase")
 public class NoDatabaseController {
-    @GetMapping("/heatlh")
+    @GetMapping("/health")
     public String healthCheck() {
         return "OK";
     }

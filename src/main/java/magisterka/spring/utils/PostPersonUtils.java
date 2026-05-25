@@ -4,7 +4,6 @@ import magisterka.spring.repo.jpa.PostPerson;
 import magisterka.spring.models.Statistics;
 import magisterka.spring.models.UniversalPerson;
 import magisterka.spring.repo.PostPersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -13,8 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class PostPersonUtils {
 
-    @Autowired
-    private static PostPersonRepository repository;
+    private final PostPersonRepository repository;
 
     private static final Random random = new Random();
     private static final String[] names = {"Adam", "Ewa", "Kamil", "Zosia", "Marek", "Julia"};
@@ -34,16 +32,16 @@ public class PostPersonUtils {
 
 
     public PostPersonUtils(PostPersonRepository repository) {
-        PostPersonUtils.repository = repository;
+        this.repository = repository;
     }
 
-    public static List<PostPerson> getAll() {
+    public List<PostPerson> getAll() {
         return repository.findAll();
     }
 
 
 
-    public static List<PostPerson> createPersons(List<PostPerson> persons) {
+    public List<PostPerson> createPersons(List<PostPerson> persons) {
         return repository.saveAll(persons);
     }
 
@@ -68,7 +66,7 @@ public class PostPersonUtils {
         }).collect(Collectors.toList());
     }
 
-    public static List<Statistics> personStatistics() {
+    public List<Statistics> personStatistics() {
         List<PostPerson> persons = repository.findAll();
         if (persons.isEmpty()) {
             return Collections.emptyList();

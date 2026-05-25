@@ -23,8 +23,8 @@ public class MongoRecordController {
     }
 
     @GetMapping("/getRecords")
-    public List<MongoRecord> getRecords(@RequestBody LimitRequest request) {
-        return utils.getRecords(request.limit);
+    public List<MongoRecord> getRecords(@RequestParam int limit) {
+        return utils.getRecords(limit);
     }
 
     @PostMapping("/createRecords")

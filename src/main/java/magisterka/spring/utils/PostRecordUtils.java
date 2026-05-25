@@ -1,7 +1,6 @@
 package magisterka.spring.utils;
 
 import magisterka.spring.repo.jpa.PostRecord;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -10,32 +9,31 @@ import java.util.List;
 
 @Service
 public class PostRecordUtils {
-    @Autowired
-    private static PostRecordRepository repository;
+    private final PostRecordRepository repository;
     public PostRecordUtils(PostRecordRepository repository) {
         this.repository = repository;
     }
 
-    public static List<PostRecord> getALL() {
+    public List<PostRecord> getALL() {
         return repository.findAll();
     }
 
-    public static List<PostRecord> getRecords(int limit) {
+    public List<PostRecord> getRecords(int limit) {
         return repository.findAll(
                 PageRequest.of(0, limit, Sort.by(Sort.Direction.ASC, "id"))
         ).getContent();
 
     }
 
-    public static List<PostRecord> createRecords(List<PostRecord> records) {
+    public List<PostRecord> createRecords(List<PostRecord> records) {
         return repository.saveAll(records);
     }
 
-    public static List<PostRecord> updateRecords(List<PostRecord> records) {
+    public List<PostRecord> updateRecords(List<PostRecord> records) {
         return repository.saveAll(records);
     }
 
-    public static int deleteRecords(int limit) {
+    public int deleteRecords(int limit) {
         List<PostRecord> recordsToDelete = repository.findAll(
                 PageRequest.of(0, limit, Sort.by(Sort.Direction.ASC, "id"))
         ).getContent();

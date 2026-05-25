@@ -10,25 +10,31 @@ import java.util.List;
 @RequestMapping("/postRecord")
 public class PostRecordController {
 
+    private final PostRecordUtils utils;
+
+    public PostRecordController(PostRecordUtils utils) {
+        this.utils = utils;
+    }
+
     @GetMapping("/getAll")
     public List<PostRecord> getALL(){
-        return PostRecordUtils.getALL();
+        return utils.getALL();
     }
     @GetMapping("/getRecords")
-    public List<PostRecord> getRecords(@RequestBody LimitRequest request) {
-        return PostRecordUtils.getRecords(request.limit);
+    public List<PostRecord> getRecords(@RequestParam int limit) {
+        return utils.getRecords(limit);
     }
     @PostMapping("/createRecords")
     public List<PostRecord> createRecords(@RequestBody List<PostRecord> records){
-        return PostRecordUtils.createRecords(records);
+        return utils.createRecords(records);
     }
     @PutMapping("/updateRecords")
     public List<PostRecord> updateRecords(@RequestBody List<PostRecord> records){
-        return PostRecordUtils.updateRecords(records);
+        return utils.updateRecords(records);
     }
     @DeleteMapping("/deleteRecords")
     public int deleteRecords(@RequestBody LimitRequest request) {
-        return PostRecordUtils.deleteRecords(request.limit);
+        return utils.deleteRecords(request.limit);
     }
 
 }
